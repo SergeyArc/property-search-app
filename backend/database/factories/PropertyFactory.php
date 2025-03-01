@@ -22,10 +22,10 @@ class PropertyFactory extends Factory
         return [
             'name' => fake()->unique()->word(),
             'price' => $this->faker->numberBetween(10000),
-            'bedrooms' => $this->faker->randomNumber(),
-            'bathrooms' => $this->faker->randomNumber(),
-            'storeys' => $this->faker->randomNumber(),
-            'garages' => $this->faker->randomNumber(),
+            'bedrooms' => $this->faker->numberBetween(1, 6),
+            'bathrooms' => $this->faker->numberBetween(1, 6),
+            'storeys' => $this->faker->numberBetween(1, 6),
+            'garages' => $this->faker->numberBetween(1, 6),
         ];
     }
 }

@@ -53,7 +53,7 @@ use OpenApi\Attributes as OA;
 )]
 class GetProperties
 {
-    private const PER_PAGE = 20;
+    public const PER_PAGE = 20;
 
     public function __construct(private readonly int $currentPage = 1)
     {
@@ -76,11 +76,16 @@ class GetProperties
             ->through($filterInstances)
             ->thenReturn();
 
-        $properties = $query->get();
+        $paginator = $query->paginate(
+            self::PER_PAGE,
+            ['*'],
+            'page',
+            $this->currentPage
+        );
 
         return new LengthAwarePaginator(
-            $properties->map(fn (Property $property) => PropertyData::from($property)),
-            $query->count(),
+            $paginator->getCollection()->map(fn (Property $property) => PropertyData::from($property)),
+            $paginator->total(),
             self::PER_PAGE,
             $this->currentPage,
             ['path' => route('properties.index')]
