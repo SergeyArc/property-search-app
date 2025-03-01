@@ -7,7 +7,7 @@ services:
     ports:
       - ${NGINX_PORT:-80}:80
     volumes:
-      - ./src:/app
+      - ./backend:/app
       - ./docker/nginx/conf.d:/etc/nginx/conf.d
 
   php-fpm:
@@ -21,7 +21,7 @@ services:
     depends_on:
       - postgres
     volumes:
-      - ./src:/app
+      - ./backend:/app
 
   php-cli:
     container_name: ${APP_NAME}_php-cli
@@ -31,7 +31,7 @@ services:
       args:
         - TZ=${TZ}
     volumes:
-      - ./src:/app
+      - ./backend:/app
       - composer:/root/.composer/cache
    
   postgres:
