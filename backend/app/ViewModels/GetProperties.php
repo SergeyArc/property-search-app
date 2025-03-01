@@ -55,17 +55,15 @@ class GetProperties
 {
     public const PER_PAGE = 20;
 
-    public function __construct(private readonly int $currentPage = 1)
-    {
-    }
+    public function __construct(private readonly int $currentPage = 1) {}
 
     public function properties(FilterData $filters): LengthAwarePaginator
     {
-        $queryParams = array_filter($filters->toArray(), static fn($value) => $value !== null);
+        $queryParams = array_filter($filters->toArray(), static fn ($value) => $value !== null);
 
         $filterInstances = array_filter(
             array_map(
-                static fn($key, $value) => Filters::tryFrom($key)?->createFilter($value),
+                static fn ($key, $value) => Filters::tryFrom($key)?->createFilter($value),
                 array_keys($queryParams),
                 $queryParams
             )

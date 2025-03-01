@@ -2,11 +2,11 @@
 
 namespace App\DataTransferObjects;
 
-use Spatie\LaravelData\Data;
 use OpenApi\Attributes as OA;
 use Spatie\LaravelData\Attributes\MapName;
-use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 use Spatie\LaravelData\Attributes\Validation\Min;
+use Spatie\LaravelData\Data;
+use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 
 #[OA\Schema(
     schema: 'FilterData',
@@ -18,7 +18,7 @@ use Spatie\LaravelData\Attributes\Validation\Min;
         new OA\Property(property: 'storeys', description: 'number of storeys', type: 'integer', example: 1),
         new OA\Property(property: 'garages', description: 'number of garages', type: 'integer', example: 1),
         new OA\Property(property: 'price_min', description: 'Minimum property price', type: 'integer', example: 1000000),
-        new OA\Property(property: 'price_max', description: 'Maximum property price', type: 'integer', example: 5000000)
+        new OA\Property(property: 'price_max', description: 'Maximum property price', type: 'integer', example: 5000000),
     ],
     type: 'object'
 )]
@@ -28,18 +28,16 @@ class FilterData extends Data
     public function __construct(
         public readonly ?string $name = null,
         #[Min(0)]
-        public readonly ?int    $bedrooms = null,
+        public readonly ?int $bedrooms = null,
         #[Min(0)]
-        public readonly ?int    $bathrooms = null,
+        public readonly ?int $bathrooms = null,
         #[Min(0)]
-        public readonly ?int    $storeys = null,
+        public readonly ?int $storeys = null,
         #[Min(0)]
-        public readonly ?int    $garages = null,
+        public readonly ?int $garages = null,
         #[Min(0)]
-        public readonly ?int    $priceMin = null,
+        public readonly ?int $priceMin = null,
         #[Min(0)]
-        public readonly ?int    $priceMax = null,
-    )
-    {
-    }
+        public readonly ?int $priceMax = null,
+    ) {}
 }

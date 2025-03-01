@@ -2,7 +2,6 @@
 
 namespace App\DataTransferObjects;
 
-
 use OpenApi\Attributes as OA;
 use Spatie\LaravelData\Attributes\MapName;
 use Spatie\LaravelData\Data;
@@ -18,7 +17,7 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
         new OA\Property(property: 'bathrooms', type: 'integer', example: 2),
         new OA\Property(property: 'storeys', type: 'integer', example: 2),
         new OA\Property(property: 'garages', type: 'integer', example: 1),
-        new OA\Property(property: 'price', type: 'integer', example: 500000)
+        new OA\Property(property: 'price', type: 'integer', example: 500000),
     ],
     type: 'object'
 )]
@@ -26,14 +25,12 @@ use Spatie\LaravelData\Mappers\SnakeCaseMapper;
 class PropertyData extends Data
 {
     public function __construct(
-        public int             $id,
+        public int $id,
         public readonly string $name,
-        public readonly int    $bedrooms,
-        public readonly int    $bathrooms,
-        public readonly int    $storeys,
-        public readonly int    $garages,
-        public readonly int    $price
-    )
-    {
-    }
+        public readonly int $bedrooms,
+        public readonly int $bathrooms,
+        public readonly int $storeys,
+        public readonly int $garages,
+        public readonly int $price
+    ) {}
 }

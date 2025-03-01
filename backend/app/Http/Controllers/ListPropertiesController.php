@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\DataTransferObjects\FilterData;
 use App\ViewModels\GetProperties;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use App\DataTransferObjects\FilterData;
 
 class ListPropertiesController extends Controller
 {

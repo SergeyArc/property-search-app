@@ -2,10 +2,14 @@
 
 namespace App\Enums;
 
-use App\Filters\{
-    NameFilter, BedroomsFilter, BathroomsFilter, StoreysFilter, GaragesFilter, PriceMinFilter, PriceMaxFilter
-};
+use App\Filters\BathroomsFilter;
+use App\Filters\BedroomsFilter;
 use App\Filters\Filter;
+use App\Filters\GaragesFilter;
+use App\Filters\NameFilter;
+use App\Filters\PriceMaxFilter;
+use App\Filters\PriceMinFilter;
+use App\Filters\StoreysFilter;
 
 enum Filters: string
 {
